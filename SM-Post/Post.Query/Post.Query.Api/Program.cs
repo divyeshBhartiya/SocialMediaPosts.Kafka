@@ -53,6 +53,7 @@ dispatcher.RegisterHandler<FindPostsWithLikesQuery>(queryHandler.HandleAsync);
 builder.Services.AddScoped<IQueryDispatcher<PostEntity>>(_ => dispatcher);
 
 builder.Services.AddControllers();
+builder.Services.AddHostedService<ConsumerHostedService>();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
