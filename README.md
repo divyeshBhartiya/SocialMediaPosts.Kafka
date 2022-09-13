@@ -4,7 +4,7 @@ This repository demonstrates handling social media posts via Event Driven Archit
 ![Event Sourcing With Kafka](https://user-images.githubusercontent.com/16538471/189958200-816d9b1b-cace-448f-a2a0-91c2673952a7.JPG)
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
-## 'Topics' covers:
+## 'Topics' covered:
 CQRS
 
 Event Sourcing
