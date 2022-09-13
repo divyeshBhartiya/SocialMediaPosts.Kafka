@@ -30,27 +30,27 @@ namespace Post.Cmd.Infrastructure.Handlers
             return aggregate;
         }
 
-        //public async Task RepublishEventsAsync()
-        //{
-        //    var aggregateIds = await _eventStore.GetAggregateIdsAsync();
+        public async Task RepublishEventsAsync()
+        {
+            var aggregateIds = await _eventStore.GetAggregateIdsAsync();
 
-        //    if (aggregateIds == null || !aggregateIds.Any()) return;
+            if (aggregateIds == null || !aggregateIds.Any()) return;
 
-        //    foreach (var aggregateId in aggregateIds)
-        //    {
-        //        var aggregate = await GetByIdAsync(aggregateId);
+            foreach (var aggregateId in aggregateIds)
+            {
+                var aggregate = await GetByIdAsync(aggregateId);
 
-        //        if (aggregate == null || !aggregate.Active) continue;
+                if (aggregate == null || !aggregate.Active) continue;
 
-        //        var events = await _eventStore.GetEventsAsync(aggregateId);
+                var events = await _eventStore.GetEventsAsync(aggregateId);
 
-        //        foreach (var @event in events)
-        //        {
-        //            var topic = Environment.GetEnvironmentVariable("KAFKA_TOPIC");
-        //            await _eventProducer.ProduceAsync(topic, @event);
-        //        }
-        //    }
-        //}
+                foreach (var @event in events)
+                {
+                    var topic = Environment.GetEnvironmentVariable("KAFKA_TOPIC");
+                    await _eventProducer.ProduceAsync(topic, @event);
+                }
+            }
+        }
 
         public async Task SaveAsync(AggregateRoot aggregate)
         {
